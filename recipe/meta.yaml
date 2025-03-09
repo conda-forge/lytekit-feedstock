@@ -17,8 +17,10 @@ build:
     - pyflyte-map-execute=flytekit.bin.entrypoint:map_execute_task_cmd
     - pyflyte=flytekit.clis.sdk_in_container.pyflyte:main
     - flyte-cli=flytekit.clis.flyte_cli.main:_flyte_cli
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  script:
+    - rm -rf plugins
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   host:
